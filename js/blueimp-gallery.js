@@ -95,6 +95,8 @@
             typeProperty: 'type',
             // The list object property (or data attribute) with the object title:
             titleProperty: 'title',
+			  // The list object property (or data attribute) with the object Description:
+			  descriptionProperty: 'description',
             // The list object property (or data attribute) with the object URL:
             urlProperty: 'href',
             // The gallery listens for transitionend events before triggering the
@@ -916,6 +918,7 @@
                 this.unloadElements(index);
             }
             this.setTitle(index);
+			   this.setDescription(index);
         },
 
         onslide: function (index) {
@@ -934,6 +937,17 @@
                 }
             }
         },
+		  setDescription: function(index) {
+			 var text = this.slides[index].firstChild.description,
+				 descriptionElement = this.descriptionElement;
+			 if (descriptionElement.length) {
+				 this.descriptionElement.empty();
+				 if (text) {
+					 descriptionElement.show();
+					 descriptionElement[0].innerHTML=text;
+				 }
+			 }
+		  },
 
         setTimeout: function (func, args, wait) {
             var that = this;
@@ -941,6 +955,7 @@
                 func.apply(that, args || []);
             }, wait || 0);
         },
+
 
         imageFactory: function (obj, callback) {
             var that = this,
@@ -973,10 +988,12 @@
                         callback(event);
                     }
                 },
-                title;
+                title,
+					desc;
             if (typeof url !== 'string') {
                 url = this.getItemProperty(obj, this.options.urlProperty);
                 title = this.getItemProperty(obj, this.options.titleProperty);
+					desc = this.getItemProperty(obj, this.options.descriptionProperty);
             }
             if (backgroundSize === true) {
                 backgroundSize = 'contain';
@@ -992,6 +1009,9 @@
             if (title) {
                 element.title = title;
             }
+			  if (desc) {
+				  element.description = desc;
+			  }
             $(img).on('load error', callbackWrapper);
             img.src = url;
             return element;
@@ -1307,6 +1327,9 @@
             this.titleElement = this.container.find(
                 this.options.titleElement
             ).first();
+			  this.descriptionElement = this.container.find(
+				  this.options.descriptionElement
+			  ).first();
             if (this.num === 1) {
                 this.container.addClass(this.options.singleClass);
             }

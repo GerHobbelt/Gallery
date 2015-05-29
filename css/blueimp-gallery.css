@@ -140,6 +140,32 @@
   opacity: 0.8;
   display: none;
 }
+.blueimp-gallery > .footer {
+   position: absolute;
+   width: 100%;
+   max-height: 33%;
+   bottom: 0px;
+   left: 0px;
+   padding: 15px;
+   overflow-y: scroll;
+   overflow-x: hidden;
+   -webkit-overflow-scrolling:touch;
+   display: none;
+
+}
+.blueimp-gallery > .footer > .description {
+
+   /*margin: 0 40px 0 0;*/
+   font-size: 20px;
+   line-height: 30px;
+   color: #fff;
+   text-shadow: 0 0 2px #000;
+   opacity: 0.8;
+   display: block;
+   line-break: auto;
+   background-color: rgba(0,0,0,0.5) !important;
+
+}
 .blueimp-gallery > .close {
   padding: 15px;
   right: 15px;
@@ -175,6 +201,7 @@
 .blueimp-gallery-controls > .next,
 .blueimp-gallery-controls > .close,
 .blueimp-gallery-controls > .title,
+.blueimp-gallery-controls > .footer,
 .blueimp-gallery-controls > .play-pause {
   display: block;
   /* Fix z-index issues (controls behind slide element) on Android: */
