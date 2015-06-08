@@ -61,6 +61,8 @@
             slidesContainer: 'div',
             // The tag name, Id, element or querySelector of the title element:
             titleElement: 'h3',
+			  // The tag name, Id, element or querSelector of the description element:
+				descriptionElement: '.description',
             // The class to add when the gallery is visible:
             displayClass: 'blueimp-gallery-display',
             // The class to add when the gallery controls are visible:
@@ -96,7 +98,7 @@
             // The list object property (or data attribute) with the object title:
             titleProperty: 'title',
 			  // The list object property (or data attribute) with the object Description:
-			  descriptionProperty: 'description',
+			  	descriptionProperty: 'description',
             // The list object property (or data attribute) with the object URL:
             urlProperty: 'href',
             // The gallery listens for transitionend events before triggering the
