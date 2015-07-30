@@ -14,11 +14,14 @@
 
 /* global define, window, document, DocumentTouch */
 
-(function (factory) {
+var Gallery = (function (factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
         // Register as an anonymous AMD module:
         define(['./blueimp-helper'], factory);
+    } else if ( typeof module === "object" && typeof module.exports === "object" ) {
+        // For CommonJS environment (browserify)
+        return factory(require('jquery'))
     } else {
         // Browser globals:
         window.blueimp = window.blueimp || {};
@@ -1358,3 +1361,5 @@
 
     return Gallery;
 }));
+
+module.exports = Gallery;
