@@ -19,7 +19,11 @@
             './blueimp-helper',
             './blueimp-gallery-video'
         ], factory);
-    } else {
+    } else if ( typeof module === "object" && typeof module.exports === "object" ) {
+        var $ = require("jquery");
+        var gallery = require("./blueimp-gallery");
+        factory($, gallery)
+    }  else {
         // Browser globals:
         factory(
             window.blueimp.helper || window.jQuery,
